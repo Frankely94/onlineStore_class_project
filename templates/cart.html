@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/cart.css') }}">
+    <title>Cart</title>
+</head>
+<body>
+    <h1>Cart</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Category</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in cart_products %}
+            <tr>
+                <td>{{ product['main_id'] }}</td>
+                <td><b>{{ product['productname'] }}</b></td>
+                <td>$ {{ product['price'] }}</td>
+               
+                <td>{{ product['product_category'] }}</td>
+                <td>
+                    <form action="{{ url_for('remove_from_cart') }}" method="POST">
+                        <input type="hidden" name="product_id" value="{{ product['main_id'] }}">
+                        <button type="submit">Remove</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p class="total-price">Total Price $ {{ total_price }} Dollars</p>
+
+    <h1>Would You Like To: </h1>
+        <ul>
+		<li><a href="{{url_for('index')}}">Add More Items to Your Cart</a></li>
+        <p></p>
+		<li><a href="{{url_for('update')}}">Update Your Info</a></li>
+		<p></p>
+		<li><a href="{{url_for('logout')}}">Log Out</a></li>
+        <p></p>
+		<li><a href="{{url_for('shipping')}}">Procced To Checkout</a></li>
+		</ul>
+</body>
+</html>

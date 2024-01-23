@@ -1,0 +1,217 @@
+/* Header styling for frb */
+.header {
+  background-color: #f9f9f9;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+  color: #333;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo img {
+  max-height: 40px;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+  color: #ff6f00;
+}
+
+nav form {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: auto;
+}
+
+nav input[type="search"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+nav button[type="submit"] {
+  background-color: #ff6f00;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
+}
+
+nav button[type="submit"]:hover {
+  background-color: #333;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.user .profile,
+.user .cart {
+  margin-left: 20px;
+}
+
+.user .profile a,
+.user .cart a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.user .profile a:hover,
+.user .cart a:hover {
+  color: #f44336;
+}
+
+.user .profile i,
+.user .cart i {
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+#cart-count {
+  background-color: #f44336;
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* CSS code for small screens */
+@media screen and (max-width: 768px) {
+  .logo {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .menu-toggle {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .show-menu {
+    display: none;
+  }
+
+  .show-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .show-menu li {
+    margin-bottom: 10px;
+  }
+
+  /* Additional styles for list items in the menu */
+  .show-menu li a {
+    display: block;
+    padding: 10px;
+    background-color: lightgray;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  .show-menu li a:hover {
+    background-color: gray;
+    color: white;
+  }
+
+  /* Styles to display menu when logo is clicked */
+  .logo a {
+    cursor: pointer;
+  }
+
+  .show-menu {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .menu-toggle i {
+    cursor: pointer;
+  }
+
+  .show-menu ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Updated styles for header container */
+  header .container {
+    flex-wrap: wrap;
+  }
+
+  nav ul {
+    flex: 1 0 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .user .profile,
+  .user .cart {
+    margin-left: 0;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  nav form {
+    margin-left: 0;
+    margin-top: 10px;
+    justify-content: center;
+  }
+}

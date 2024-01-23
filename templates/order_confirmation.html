@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/checkout.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/header.css') }}">   
+
+    <title>Order Confirmation</title>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      
+      <div class="user">
+        <div class="profile">
+          <a href="{{ url_for('display') }}"><i class="material-icons icon-large">account_circle</i>Account</a>
+        </div>
+       
+      </div>
+    </div>
+  </header>
+  <h1>Thank You For Shopping Order Confirmed</h1>
+  <p>Your order ID is: {{ order_id }}</p>
+  <h1>Here is a list of itmes ordered</h1>
+  <div class="content-container">
+    <h2>Order Items</h2>
+    <table>
+      <thead>
+        <tr>
+         
+          <th>Name</th>
+          <th>price</th>
+          <th>Product Category</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for product in cart_products %}
+          <tr>
+    
+              <td><b>{{ product['productname'] }}</b></td>
+              <td>$ {{ product['price'] }}</td>
+              <td>{{ product['product_category'] }}</td>
+          
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+    <p>Total Price: $ {{ total_price }}</p>
+  </div>
+  <div class="ship-container">
+    {% for ship in shipping_info %}
+    <h2>Shipping Information</h2>
+    <p>Full Name: {{ ship['Full_Name'] }}</p>
+    <p>Street Address: {{ ship['Street_Address']  }}</p>
+    <p>City: {{ ship['City'] }}</p>
+    <p>State/Province: {{ ship['State_Province'] }}</p>
+    <p>Postal Code: {{ ship['Postal_Code'] }}</p>
+    <p>Country: {{ ship['Country'] }}</p>
+    {% endfor %}
+  </div>
+  
+    <form action="{{ url_for('index') }}" >
+        <button type="submit">HomePage</button>
+    </form>
+    <h1></h1>
+    <form action="{{ url_for('logout') }}" >
+      <button type="submit">Log Out</button>
+    </form>
+
+</body>
+</html>
+

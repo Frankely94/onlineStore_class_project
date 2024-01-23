@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/header.css') }}">
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/profile.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/material-icons.min.js"></script>
+    <title> User Profile</title>
+</head>
+
+  <body class="backg">
+    <h1>Profile</h1>
+    <div class="profile-container">
+        <span class="material-icons icon-large">account_circle</span>
+        <h2>Welcome, {{ account['username'] }}!</h2>
+        <p>Email: {{ account['email'] }}</p>
+        <p>Phone: {{ account['phone'] }}</p>
+        <p>Street Address: {{ account['address'] }}</p>
+        <p>City: {{account['city'] }}</p>
+        <p>State: {{ account['state'] }}</p>
+        <p>Country: {{ account['country'] }}</p>
+        
+        <h1>Would You Like To: </h1>
+        <ul >
+					<li ><a href="{{url_for('index')}}">Keep Shopping</a></li>
+          <p></p>
+					<li><a href="{{url_for('update')}}">Update Your Info</a></li>
+					<p></p>
+					<li><a href="{{url_for('logout')}}">Log Out</a></li>
+				</ul>
+        
+    </div>
+   
+</body>
+</html>

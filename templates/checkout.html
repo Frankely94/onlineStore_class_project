@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/checkout.css') }}">
+
+    <title>Checkout</title>
+</head>
+<body>
+  <div class="body-container">
+    <h1>Payment Checkout</h1>
+    <div class="payment-container">
+      <h2>Payment</h2>
+      
+      <p><b>Total Price: ${{ total_price }}</b></p>
+    </div>
+    <div class="ship-container">
+        {% for ship in shipping_info %}
+        <tr>
+          <td>{{ ship['Full_Name'] }}</td>
+          <td>{{ ship['Street_Address'] }}</td>
+          <td>{{ ship['City'] }}</td>
+          <td>{{ ship['State_Province'] }}</td>
+          <td>{{ ship['Postal_Code'] }}</td>
+          <td>{{ ship['Country'] }}</td>
+        </tr>
+        {% endfor %}
+    </div>
+    <div class="content-container">
+      <h2>Order Items</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for product in cart_products %}
+            <tr>
+                <td>{{ product['main_id'] }}</td>
+                <td><b>{{ product['productname'] }}</b></td>
+                <td>$ {{ product['price'] }}</td>
+                <td>{{ product['product_category'] }}</td>
+            
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+      <p>Total Price: $ {{ total_price }}</p>
+    </div>
+    <div class="buttons-container">
+      <form class="total-price" action="{{ url_for('place_order') }}" method="POST">
+        <button type="submit">Place Order</button>
+      </form>
+      <form action="{{ url_for('index') }}">
+        <button type="submit">Continue Shopping</button>
+      </form>
+    </div>
+  </div>
+  
+</body>
+</html>

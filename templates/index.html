@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/index.css') }}"> 
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/header.css') }}">       
+         <script src="{{ url_for('static', filename='scripts/items.js') }}"></script>
+
+         
+
+
+        <title>Product Display</title>
+    </head>
+<body>
+  <div id=demo></div>
+    <header class="header">
+        <div class="container">
+          
+          <nav class="show-menu">
+            <ul>
+              <li><a href="{{url_for('index')}}">Welcome. Enjoy our Unmachable Prices</a></li>
+              <li><a href=""></a></li>
+              <li><a href=""></a></li>
+              <li><a href=""></a></li>
+             
+            </ul>
+          </nav>
+          <div class="user">
+            <div class="profile">
+              <a href="{{url_for('display')}}"><i class="material-icons icon-large">account_circle</i>{% for accounts in account %}<h3>Welcome {{ accounts['username'] }}</h3>{% endfor %}</a>
+            </div>
+            <div class="cart">
+              <a href="{{url_for('cart')}}">
+                <i class="material-icons">shopping_cart</i>
+                {% if cart_count > 0 %}
+                <span id="cart-count">{{ cart_count }}</span>
+                {% endif %}
+                
+              </a>
+            </div>
+          </div>
+        </div>
+    </header>
+    
+    
+        <div class="category-container">
+            <h1 style="text-align: center;">Categories</h1>
+            <ul id="category-list" >
+                <li data-category="all" class="active">All</li>
+                <li data-category="Fashion">Fashion</li>
+                <li data-category="Health and Beauty">Health and Beauty</li>
+                <li data-category="Sports and Outdoors">Sports and Outdoors</li>
+                <li data-category="Electronics">Electronics</li>
+                <li data-category="Home Decor">Home Decor</li>
+            </ul>
+        </div>
+       
+        <ul id="product-list">
+            {% for product in products %}
+            <li data-category="{{product['product_category'] }}">
+               
+                <h3>{{ product['productname'] }}</h3>
+                <p class="price">Price: $ {{ product['price'] }}</p>
+                <p class="price">Quantity Available:{{ product['quantity'] }}</p>
+                <form action="{{ url_for('add_to_cart') }}" method="POST">
+                  <input type="hidden" name="product_id" value="{{ product['productid'] }}">
+                  <button type="submit">Add To Cart</button>
+              </form>
+            </li>
+            {% endfor %}
+        </ul>
+    
+    
+</body>
+</html>

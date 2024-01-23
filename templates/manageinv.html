@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Mange Inventory </title>
+    <link rel="stylesheet" href="/static/styles/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body class="bg">
+    <li><a href="{{url_for('logout')}}">Log Out</a></li>
+    <h1>
+      <center>Inventory Management</center>
+    </h1>
+    <!-- Add Inventory Form -->
+    <!-- <h2>Add Inventory</h2> -->
+    <button type="button" class="collapsibleClass"><i class="fa fa-expand"></i>  Add Inventory</button>
+    <div class="contentClass">
+      <form class="formClass" action="/addInventory" method="post">
+        <div class="msg">{{ amsg }}</div>
+        <label>Product Name:</label>
+        <input type="text" name="product_name">
+        <br>
+        <br>
+        <label for="existing_categories">Select existing category:</label>
+        <select name="existing_categories" id="existing_categories"> {% for row in data %} <option>{{ row.category }}</option> {% endfor %} </select>
+        <br>
+        <br>
+        <!-- Text input for a new category -->
+        <label for="new_category">Or enter a new category:</label>
+        <input type="text" id="new_category" name="new_category">
+        <br>
+        <br>
+        <label>Quantity:</label>
+        <input type="number" name="quantity">
+        <br>
+        <br>
+        <label>price per item:</label>
+        <input type="number" name="price" step="0.01" min="0.01" placeholder="0.00">
+        <br>
+        <br>
+        <input class="submitClass" type="submit" value="Add Inventory">
+      </form>
+    </div>
+    <hr>
+    <!-- Update Inventory Form -->
+    <!-- <h2>Update Inventory</h2> -->
+    <button type="button" class="collapsibleClass"><i class="fa fa-expand"></i>  Update Inventory</button>
+    <div class="contentClass">
+      <form class="formClass" action="/updateInventory" method="post">
+        <div class="msg">{{ msg }}</div> Product ID: <input type="number" name="product_id" required>
+        <br>
+        <br> New Quantity: <input type="number" name="new_quantity">
+        <br>
+        <br> price per item: <input type="number" name="price" step="0.01" min="0.01" placeholder="0.00">
+        <br>
+        <br>
+        <input class="submitClass" type="submit" value="Update Inventory">
+      </form>
+    </div>
+    <hr>
+    <!-- Delete Inventory Form -->
+    <!-- <h2>Delete Inventory</h2> -->
+    <button type="button" class="collapsibleClass"><i class="fa fa-expand"></i>  Delete Inventory</button>
+    <div class="contentClass">
+      <form class="formClass" action="/deleteInventory" method="post">
+        <div class="msg">{{ dmsg }}</div> Product ID: <input type="number" name="product_id_to_delete">
+        <br>
+        <br>
+        <input class="submitClass" type="submit" value="Delete Inventory">
+      </form>
+    </div>
+    <hr>
+    <!-- View Inventory Report -->
+    <!-- <h2>View Inventory Report</h2> -->
+    <button type="button" class="collapsibleClass"><i class="fa fa-expand"></i>  View Inventory Report</button>
+    <div class="contentClass">
+      <a href="{{ url_for('inventoryreport')}}" target="_blank"> View Inventory Report </a>
+    </div>
+    <script>
+      var coll = document.getElementsByClassName("collapsibleClass");
+      var i;
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

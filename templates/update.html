@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/header.css') }}">
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/profile.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/material-icons.min.js"></script>
+    <title> User Profile</title>
+</head>
+
+  <body class="backg">
+    <h1>Profile</h1>
+    <div class="profile-container">
+        <div class="content" align="center">
+			<div class="topbar">
+				<h2>Welcome. You are in Update Page!! </h2>				 
+			</div></br></br>
+			<div class="contentbar">
+			<h1>Fill Your Details to Update</h1></br>
+		<form action="{{ url_for('update') }}" method="post" autocomplete="off">
+				<div class="msg">{{ msg }}</div>
+				<input type="text" name="username" placeholder="New Username" class="textbox" id="username" required></br></br>
+				<input type="password" name="password" placeholder="New Password" class="textbox" id="password" required></br></br>
+				<input type="email" name="email" placeholder="New Email" class="textbox" id="email" required></br></br>
+				<input type="text" name="phone" placeholder="New Phone" class="textbox" id="phone" required></br></br>
+				<input type="text" name="street" placeholder="New Street" class="textbox" id="street" required></br></br>
+				<input type="email" name="city" placeholder="City" class="textbox" id="email" required></br></br>
+				<input type="text" name="state" placeholder="State" class="textbox" id="phone" required></br></br>
+				<input type="text" name="country" placeholder="Country" class="textbox" id="address" required></br></br>
+				<input type="submit" class="btn" value="Update">
+		</form>				 
+			</div>
+			
+		</div>
+        
+        <h1>Would You Like To: </h1>
+        <ul>
+					<li><a href="{{url_for('index')}}">Keep Shopping</a></li>
+          <p></p>
+					<li><a href="{{url_for('display')}}">Display Current User info </li>
+					<p></p>
+					<li><a href="{{url_for('logout')}}">Log Out</a></li>
+				</ul>
+        
+    </div>
+   
+</body>
+</html>

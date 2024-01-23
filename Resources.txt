@@ -1,0 +1,9 @@
+
+https://stackoverflow.com/questions/15820288/mysql-error-1241-operand-should-contain-1-columns                     .
+
+https://www.w3schools.com/sql/default.asp      probelm related to sql 
+
+https://www.youtube.com/watch?v=o9TwipumGoU :  and E-commerce example.
+
+https://www.mysql.com/products/workbench/
+
